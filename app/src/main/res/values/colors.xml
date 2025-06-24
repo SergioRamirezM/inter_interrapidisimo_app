@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="brandPrimary">#54595F</color>
+    <color name="brandSecondary">#FF7110</color>
+
+    <color name="colorPrimary">#FF7110</color>
+    <color name="colorPrimaryDark">#E6600F</color>
+    <color name="colorPrimaryLight">#FFC28A</color>
+
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorOnSecondary">#000000</color>
+</resources>
