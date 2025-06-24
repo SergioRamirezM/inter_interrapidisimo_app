@@ -17,17 +17,13 @@ Permite:
 
 
 ## Arquitectura
-SplashActivity → LoginActivity → MainActivity/Fragments
-├─ ViewModels (StateFlow + Resource)
-├─ UseCases (puro negocio, maneja errores HTTP)
-├─ Repositorios (Service + Database)
-└─ DTOs ↔ Mappers ↔ Entities
+MVVM y Clean Architecture
 
 ## Endpoints
 | Funcionalidad                                | Endpoint                                                                                                           |
 |-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
 | Chequeo de versión                           | `GET api/ParametrosFramework/ConsultarParametrosFramework/VPStoreAppControl`                                        |
-| Login                                        | `POST FtEntregaElectronica/MultiCanales/.../Seguridad/AuthenticaUsuarioApp`                                         |
+| Login                                        | `POST FtEntregaElectronica/MultiCanales/ApiSeguridadPruebas/api/Seguridad/AuthenticaUsuarioApp`                                         |
 | Obtener esquema de tablas                    | `GET apicontrollerpruebas/api/SincronizadorDatos/ObtenerEsquema/true`                                              |
 | Obtener localidades recogidas                | `GET ParametrosFramework/ObtenerLocalidadesRecogidas`                                                              |
 
