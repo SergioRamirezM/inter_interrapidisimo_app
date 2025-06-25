@@ -9,6 +9,7 @@ import com.interrapidisimo.interrapidapp.util.ErrorHandler
 import com.interrapidisimo.interrapidapp.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
@@ -22,12 +23,7 @@ class LoginUseCase @Inject constructor(
                 val response = serviceRepository.postLogIn(request)
 
                 if (!response.isSuccessful) {
-                    val apiError = ApiError(
-                        message = "Código HTTP: ${response.code()}",
-                        code = response.code(),
-                        errorStatus = ApiError.ErrorStatus.UNKNOWN_ERROR
-                    )
-                    return@withContext Resource.Error(apiError.getErrorMessage())
+                    throw HttpException(response)
                 }
 
                 response.body()?.let { body ->

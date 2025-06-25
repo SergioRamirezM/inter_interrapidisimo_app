@@ -1,6 +1,7 @@
 package com.interrapidisimo.interrapidapp.domain.usecase
 
 import com.interrapidisimo.interrapidapp.data.repository.ServiceRepository
+import retrofit2.HttpException
 import javax.inject.Inject
 
 class CheckAppVersionUseCase @Inject constructor(
@@ -9,7 +10,7 @@ class CheckAppVersionUseCase @Inject constructor(
     suspend operator fun invoke(localVersion: Int): VersionStatus {
         val response = serviceRepository.getControlVersion()
         if (!response.isSuccessful) {
-            throw Exception("HTTP error ${response.code()}")
+            throw HttpException(response)
         }
 
         val remoteVersion = response.body()
