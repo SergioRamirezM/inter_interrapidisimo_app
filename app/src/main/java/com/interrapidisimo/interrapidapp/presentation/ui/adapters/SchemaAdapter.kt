@@ -20,10 +20,10 @@ class SchemaAdapter : ListAdapter<SchemaEntity, SchemaAdapter.SchemaVH>(DIFF) {
     }
 
     inner class SchemaVH(item: View) : RecyclerView.ViewHolder(item) {
-        private val name  = item.findViewById<TextView>(R.id.tv_table_name)
+        private val name = item.findViewById<TextView>(R.id.tv_table_name)
         private val count = item.findViewById<TextView>(R.id.tv_fields_count)
         fun bind(se: SchemaEntity) {
-            name.text  = se.tableName
+            name.text = se.tableName
             count.text = "Campos: ${se.numberOfFields}"
         }
     }
@@ -31,7 +31,8 @@ class SchemaAdapter : ListAdapter<SchemaEntity, SchemaAdapter.SchemaVH>(DIFF) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         SchemaVH(
             LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_schema, parent, false))
+                .inflate(R.layout.item_schema, parent, false)
+        )
 
     override fun onBindViewHolder(holder: SchemaVH, position: Int) =
         holder.bind(getItem(position))

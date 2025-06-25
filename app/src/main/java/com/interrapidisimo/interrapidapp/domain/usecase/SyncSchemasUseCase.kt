@@ -9,6 +9,7 @@ import com.interrapidisimo.interrapidapp.util.ErrorHandler
 import com.interrapidisimo.interrapidapp.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 import javax.inject.Inject
 
 class SyncSchemasUseCase @Inject constructor(
@@ -22,12 +23,7 @@ class SyncSchemasUseCase @Inject constructor(
                 val response = serviceRepository.getSchemas()
 
                 if (!response.isSuccessful) {
-                    val apiError = ApiError(
-                        message = "Código HTTP: ${response.code()}",
-                        code = response.code(),
-                        errorStatus = ApiError.ErrorStatus.UNKNOWN_ERROR
-                    )
-                    return@withContext Resource.Error(apiError.getErrorMessage())
+                    throw HttpException(response)
                 }
 
                 val entities = response.body().orEmpty().map { it.toEntity() }

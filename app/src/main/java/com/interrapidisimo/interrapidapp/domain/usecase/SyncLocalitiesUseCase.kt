@@ -23,12 +23,7 @@ class SyncLocalitiesUseCase @Inject constructor(
                 val response = serviceRepository.getLocalities()
 
                 if (!response.isSuccessful) {
-                    val apiError = ApiError(
-                        message = "Código HTTP: ${response.code()}",
-                        code = response.code(),
-                        errorStatus = ApiError.ErrorStatus.UNKNOWN_ERROR
-                    )
-                    return@withContext Resource.Error(apiError.getErrorMessage())
+                    throw HttpException(response)
                 }
 
                 val entities = response.body().orEmpty().map { it.toEntity() }

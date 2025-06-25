@@ -17,14 +17,15 @@ class LocalityAdapter :
         private val DIFF = object : DiffUtil.ItemCallback<LocalityEntity>() {
             override fun areItemsTheSame(a: LocalityEntity, b: LocalityEntity) =
                 a.id == b.id
+
             override fun areContentsTheSame(a: LocalityEntity, b: LocalityEntity) =
                 a == b
         }
     }
 
     inner class LocalityVH(item: View) : RecyclerView.ViewHolder(item) {
-        private val abbr    = item.findViewById<TextView>(R.id.tv_abbreviation)
-        private val full    = item.findViewById<TextView>(R.id.tv_full_name)
+        private val abbr = item.findViewById<TextView>(R.id.tv_abbreviation)
+        private val full = item.findViewById<TextView>(R.id.tv_full_name)
         fun bind(le: LocalityEntity) {
             abbr.text = le.abbreviation
             full.text = le.fullName
